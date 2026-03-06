@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<script src="assets/js/main.js" defer></script>
+		<title>MecaTron</title>
+	</head>
+	<body>
+		<header class="site-header">
+			<a class="home-link" href="./index.html">MecaTron</a>
+
+			<nav class="main-nav" aria-label="Navegación principal">
+				<a href="#producto">Producto</a>
+				<a href="#beneficios">Beneficios</a>
+				<a href="#pricing">Precios</a>
+				<a href="#contacto">Contacto</a>
+				<a class="btn-form" href="#form-solicitar-demo">Solicitar demo</a>
+			</nav>
+		</header>
+
+		<main>
+			<section id="producto" class="section">
+				<h2>Producto</h2>
+				<p>Contenido del producto.</p>
+			</section>
+
+			<section id="beneficios" class="section">
+				<h2>Beneficios</h2>
+				<p>Contenido de beneficios.</p>
+			</section>
+
+			<section id="pricing" class="section">
+				<h2>Precios</h2>
+				<p>Contenido de precios.</p>
+			</section>
+
+			<section id="contacto" class="section">
+				<h2>Contacto</h2>
+				<p>Contenido de contacto.</p>
+			</section>
+
+			<section id="form-solicitar-demo" class="section">
+				<h2>Solicita una Demostración</h2>
+				<form class="contact-form">
+					<input type="text" name="nombre" placeholder="Nombre" required />
+					<input type="email" name="correo" placeholder="Correo" required />
+					<textarea
+						name="mensaje"
+						rows="5"
+						placeholder="Mensaje"
+						required
+						style="resize: none; overflow: hidden"
+						onInput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px';" 
+					></textarea> <!-- El textArea se alarga verticalmente según el contenido escrito y evita que sea redimensionado de forma manual -->
+					<button type="submit">Enviar</button>
+				</form>
+			</section>
+		</main>
+
+		<footer class="site-footer">©2026 MecaTron. All rights reserved.</footer>
+	</body>
+</html>
