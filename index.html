@@ -7,6 +7,7 @@
 		<script src="assets/js/main.js" defer></script>
 		<title>MecaTron</title>
 	</head>
+
 	<body>
 		<header class="site-header">
 			<a class="home-link" href="./index.html">MecaTron</a>
@@ -52,13 +53,21 @@
 						placeholder="Mensaje"
 						required
 						style="resize: none; overflow: hidden"
-						onInput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px';" 
-					></textarea> <!-- El textArea se alarga verticalmente según el contenido escrito y evita que sea redimensionado de forma manual -->
+						onInput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px';"
+					></textarea>
+					<!-- El textArea se alarga verticalmente según el contenido escrito y evita que sea redimensionado de forma manual -->
 					<button type="submit">Enviar</button>
 				</form>
 			</section>
 		</main>
 
 		<footer class="site-footer">©2026 MecaTron. All rights reserved.</footer>
+		<button
+			id="btn-volver-arriba"
+			class="btn-top"
+			type="button"
+			aria-label="Volver arriba"
+			title="Volver arriba"
+		>↑<button>
 	</body>
 </html>
