@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap");
 
-/* Tokens visuales globales (colores, tipografias y superficies). */
+/* [tokens] Variables globales de color, tipografia, sombras y superficies. */
 :root {
     --bg-a: #f4f7fb;
     --bg-b: #d2e3f1;
@@ -21,7 +21,7 @@
     --font-display: "Bebas Neue", "Impact", "Haettenschweiler", sans-serif;
 }
 
-/* Reset base para un layout consistente en navegadores. */
+/* [base/reset] Normalizacion inicial para evitar diferencias entre navegadores. */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -76,7 +76,7 @@ body::after {
     font-family: var(--font-display);
 }
 
-/* Header fijo con navegacion que colapsa en modo menu segun calculo JS. */
+/* [layout/header] Header fijo; el estado colapsado lo define main.js. */
 .site-header {
     position: fixed;
     margin-top: 0.2rem;
@@ -202,7 +202,7 @@ body::after {
     background: #ff944f;
 }
 
-/* Estado aplicado por JS cuando la barra no puede mostrar todos los enlaces. */
+/* [state/nav-collapsed] Estado aplicado cuando no hay ancho suficiente para la nav. */
 .site-header.is-collapsed-nav {
     flex-wrap: wrap;
     row-gap: 0;
@@ -253,7 +253,7 @@ body::after {
     text-align: center;
 }
 
-/* Contenedor principal y bloques estandar de contenido. */
+/* [layout/main] Contenedor principal y tarjetas base de cada seccion. */
 main {
     position: relative;
     z-index: 1;
@@ -286,7 +286,7 @@ main {
     font-size: 1.1rem;
 }
 
-/* Hero principal con mensaje comercial y panel de flujo operativo. */
+/* [section/hero] Estructura visual del hero y del panel operativo lateral. */
 .hero {
     position: relative;
     display: grid;
@@ -458,7 +458,7 @@ main {
     background: #72e39b;
 }
 
-/* Bloque de demo: informacion comercial + formulario de captura. */
+/* [section/demo] Distribucion del bloque de demo: mensaje comercial + formulario. */
 .contact-form {
     max-width: 42rem;
     width: 100%;
@@ -601,7 +601,7 @@ main {
 
 .demo-form .message-field textarea {
     flex: 0;
-    /* Altura fija en desktop para evitar que el bloque del formulario supere al panel informativo. */
+    /* [section/demo] Altura fija en desktop para mantener alineacion con el panel informativo. */
     min-height: 140px;
     height: 140px;
     max-height: 140px;
@@ -674,7 +674,7 @@ main {
     filter: brightness(1.1);
 }
 
-/* Footer y boton flotante para volver al inicio. */
+/* [layout/footer] Footer y boton flotante para volver al inicio. */
 .site-footer {
     text-align: center;
     padding: 14px 0 20px;
@@ -720,7 +720,7 @@ main {
     outline-offset: 3px;
 }
 
-/* Animaciones de entrada solo cuando el usuario no prefiere reducir movimiento. */
+/* [motion/reveal] Animaciones de entrada solo si el usuario permite movimiento. */
 @media (prefers-reduced-motion: no-preference) {
     .hero-content>* {
         opacity: 0;
@@ -774,7 +774,7 @@ main {
     }
 }
 
-/* Primer ajuste responsive: tablet y pantallas medianas. */
+/* [breakpoint/980] Ajustes para tablet y pantallas medianas. */
 @media (max-width: 980px) {
     .site-header {
         padding: 8px 11px;
@@ -819,7 +819,7 @@ main {
     }
 }
 
-/* Segundo ajuste responsive: movil, con tipografia y espaciado compactos. */
+/* [breakpoint/720] Ajustes para movil con tipografia y espaciado compactos. */
 @media (max-width: 720px) {
     .site-header {
         top: 6px;

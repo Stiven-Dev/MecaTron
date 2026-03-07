@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-		<!-- Header fijo: marca, activador responsive y navegación por anclas -->
+		<!-- [layout/header] Header fijo con marca, toggle responsive y navegacion por anclas. -->
 		<header class="site-header">
 			<button
 				class="nav-toggle"
@@ -68,9 +68,9 @@
 			</nav>
 		</header>
 
-		<!-- Contenido principal de la landing: hero, secciones y formulario demo -->
+		<!-- [layout/main] Contenido principal: hero, secciones informativas y conversion. -->
 		<main>
-			<!-- Hero comercial con propuesta de valor, CTA y resumen funcional -->
+			<!-- [section/hero] Propuesta de valor, CTA y resumen funcional del producto. -->
 			<section class="hero section" aria-labelledby="hero-title">
 				<div class="hero-content">
 					<p class="hero-kicker">Software para talleres mecánicos</p>
@@ -145,7 +145,7 @@
 				</div>
 			</section>
 
-			<!-- Secciones informativas enlazadas desde la navegación principal -->
+			<!-- [section/content] Bloques de contenido enlazados desde la navegacion principal. -->
 			<section id="producto" class="section">
 				<h2>Producto</h2>
 				<p>Contenido del producto.</p>
@@ -166,7 +166,7 @@
 				<p>Contenido de precios.</p>
 			</section>
 
-			<!-- Sección de conversión: argumento comercial + formulario de contacto -->
+			<!-- [section/demo] Bloque de conversion con argumento comercial y formulario. -->
 			<section id="form-solicitar-demo" class="section demo-section">
 				<div class="demo-layout">
 					<div class="demo-info">
@@ -188,7 +188,7 @@
 							role="group"
 							aria-label="Canales rápidos de contacto"
 						>
-							<!-- Fallback funcional sin JS; JS mantiene ofuscación del valor final -->
+							<!-- [demo/contact] Fallback usable sin JS; main.js mantiene ofuscacion del valor final. -->
 							<a
 								class="demo-contact-link"
 								href="tel:+573001234567"
@@ -218,7 +218,7 @@
 					</div>
 
 					<div class="demo-form-wrap">
-						<!-- Formulario simple; el contador de caracteres se actualiza desde main.js -->
+						<!-- [demo/form] Formulario simple; el contador de caracteres se actualiza desde main.js. -->
 						<form class="contact-form demo-form">
 							<input type="text" name="nombre" placeholder="Nombre" required />
 							<input type="email" name="correo" placeholder="Correo" required />

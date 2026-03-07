@@ -1,4 +1,4 @@
-// Boton flotante: se muestra tras un umbral de scroll y regresa al inicio.
+// [feature/back-to-top] Muestra el boton tras un umbral de scroll y vuelve al inicio.
 const backToTopButton = document.querySelector("#btn-volver-arriba");
 
 if (backToTopButton) {
@@ -22,13 +22,13 @@ const homeLink = document.querySelector(".home-link");
 const mainNav = document.querySelector(".main-nav");
 const navToggle = document.querySelector(".nav-toggle");
 
-// Navegacion responsive: colapsa cuando no hay ancho suficiente o en movil.
+// [feature/nav] Navegacion responsive: colapsa por falta de ancho o en movil.
 if (siteHeader && homeLink && mainNav && navToggle) {
 	const navLinks = Array.from(mainNav.querySelectorAll("a"));
 	const staticLogoLabel = "Identificador de secciones MecaTron";
 	const mobileCollapseMaxWidth = 720;
 
-	// Sincroniza clases/aria para mantener estado visual y accesible.
+	// [feature/nav-a11y] Sincroniza clases y atributos aria para estado visual/accesible.
 	const setNavExpanded = (isExpanded) => {
 		const isInteractive = !navToggle.disabled;
 		const expandedState = isInteractive ? isExpanded : false;
@@ -47,7 +47,7 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 		);
 	};
 
-	// Mide ancho disponible del header frente al ancho real requerido por la nav.
+	// [feature/nav-measure] Compara ancho disponible del header vs ancho real requerido por la nav.
 	const needsCollapsedNav = () => {
 		if (window.innerWidth <= mobileCollapseMaxWidth) {
 			return true;
@@ -104,7 +104,7 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 		return requiredNavWidth > availableWidth;
 	};
 
-	// Aplica el modo normal o colapsado segun la medicion actual.
+	// [feature/nav-layout] Aplica modo normal o colapsado segun la medicion actual.
 	const applyNavLayout = () => {
 		const collapse = needsCollapsedNav();
 		siteHeader.classList.toggle("is-collapsed-nav", collapse);
@@ -123,7 +123,7 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 		);
 	};
 
-	// Encapsula el reflow en rAF para evitar trabajo repetido en resize.
+	// [feature/nav-perf] Encapsula el reflow en rAF para evitar recalculos repetidos.
 	const requestNavLayoutUpdate = () => {
 		window.requestAnimationFrame(applyNavLayout);
 	};
@@ -180,7 +180,7 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 	applyNavLayout();
 }
 
-// Enlaces de contacto: se resuelven en runtime para dificultar scraping directo.
+// [feature/contact-links] Resuelve enlaces en runtime para dificultar scraping directo.
 const demoContactLinks = document.querySelectorAll(".demo-contact-link");
 
 if (demoContactLinks.length > 0) {
@@ -211,7 +211,7 @@ if (demoContactLinks.length > 0) {
 	});
 }
 
-// Contador del textarea de demo con estados visuales cercanos al limite.
+// [feature/char-counter] Actualiza contador del textarea y estados cercanos al limite.
 const demoMessageInput = document.querySelector("#demo-mensaje");
 const demoCounter = document.querySelector("#demo-char-counter");
 const demoCounterCurrent = demoCounter?.querySelector("[data-current]");
