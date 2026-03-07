@@ -1,3 +1,4 @@
+// Boton flotante: se muestra tras un umbral de scroll y regresa al inicio.
 const backToTopButton = document.querySelector("#btn-volver-arriba");
 
 if (backToTopButton) {
@@ -21,10 +22,13 @@ const homeLink = document.querySelector(".home-link");
 const mainNav = document.querySelector(".main-nav");
 const navToggle = document.querySelector(".nav-toggle");
 
+// Navegacion responsive: colapsa cuando no hay ancho suficiente o en movil.
 if (siteHeader && homeLink && mainNav && navToggle) {
 	const navLinks = Array.from(mainNav.querySelectorAll("a"));
 	const staticLogoLabel = "Identificador de secciones MecaTron";
+	const mobileCollapseMaxWidth = 720;
 
+	// Sincroniza clases/aria para mantener estado visual y accesible.
 	const setNavExpanded = (isExpanded) => {
 		const isInteractive = !navToggle.disabled;
 		const expandedState = isInteractive ? isExpanded : false;
@@ -39,11 +43,16 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 
 		navToggle.setAttribute(
 			"aria-label",
-			expandedState ? "Cerrar menú de secciones" : "Abrir menú de secciones"
+			expandedState ? "Cerrar menú de secciones" : "Abrir menú de secciones",
 		);
 	};
 
+	// Mide ancho disponible del header frente al ancho real requerido por la nav.
 	const needsCollapsedNav = () => {
+		if (window.innerWidth <= mobileCollapseMaxWidth) {
+			return true;
+		}
+
 		const previousStyles = {
 			display: mainNav.style.display,
 			position: mainNav.style.position,
@@ -69,7 +78,8 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 		const requiredNavWidth = mainNav.scrollWidth;
 		const headerStyles = window.getComputedStyle(siteHeader);
 		const horizontalPadding =
-			parseFloat(headerStyles.paddingLeft) + parseFloat(headerStyles.paddingRight);
+			parseFloat(headerStyles.paddingLeft) +
+			parseFloat(headerStyles.paddingRight);
 		const headerGap = parseFloat(headerStyles.gap || "0");
 		const safeMargin = 20;
 		const availableWidth =
@@ -94,6 +104,7 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 		return requiredNavWidth > availableWidth;
 	};
 
+	// Aplica el modo normal o colapsado segun la medicion actual.
 	const applyNavLayout = () => {
 		const collapse = needsCollapsedNav();
 		siteHeader.classList.toggle("is-collapsed-nav", collapse);
@@ -108,10 +119,11 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 			"aria-label",
 			mainNav.classList.contains("is-open")
 				? "Cerrar menú de secciones"
-				: "Abrir menú de secciones"
+				: "Abrir menú de secciones",
 		);
 	};
 
+	// Encapsula el reflow en rAF para evitar trabajo repetido en resize.
 	const requestNavLayoutUpdate = () => {
 		window.requestAnimationFrame(applyNavLayout);
 	};
@@ -168,6 +180,7 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 	applyNavLayout();
 }
 
+// Enlaces de contacto: se resuelven en runtime para dificultar scraping directo.
 const demoContactLinks = document.querySelectorAll(".demo-contact-link");
 
 if (demoContactLinks.length > 0) {
@@ -176,7 +189,9 @@ if (demoContactLinks.length > 0) {
 
 	const obfuscatedContacts = {
 		phone: [43, 53, 55, 51, 48, 48, 49, 50, 51, 52, 53, 54, 55],
-		mail: [100, 101, 109, 111, 64, 109, 101, 99, 97, 116, 114, 111, 110, 46, 99, 111],
+		mail: [
+			100, 101, 109, 111, 64, 109, 101, 99, 97, 116, 114, 111, 110, 46, 99, 111,
+		],
 	};
 
 	demoContactLinks.forEach((link) => {
@@ -190,11 +205,13 @@ if (demoContactLinks.length > 0) {
 				return;
 			}
 
-			window.location.href = contactType === "phone" ? `tel:${value}` : `mailto:${value}`;
+			window.location.href =
+				contactType === "phone" ? `tel:${value}` : `mailto:${value}`;
 		});
 	});
 }
 
+// Contador del textarea de demo con estados visuales cercanos al limite.
 const demoMessageInput = document.querySelector("#demo-mensaje");
 const demoCounter = document.querySelector("#demo-char-counter");
 const demoCounterCurrent = demoCounter?.querySelector("[data-current]");
@@ -212,7 +229,10 @@ if (demoMessageInput && demoCounter && demoCounterCurrent) {
 		demoCounterCurrent.textContent = String(currentChars);
 
 		if (maxChars > 0) {
-			demoCounter.classList.toggle("is-near-limit", currentChars >= Math.floor(maxChars * 0.9));
+			demoCounter.classList.toggle(
+				"is-near-limit",
+				currentChars >= Math.floor(maxChars * 0.9),
+			);
 			demoCounter.classList.toggle("is-at-limit", currentChars >= maxChars);
 		}
 	};
@@ -220,4 +240,3 @@ if (demoMessageInput && demoCounter && demoCounterCurrent) {
 	demoMessageInput.addEventListener("input", updateMessageCounter);
 	updateMessageCounter();
 }
-
