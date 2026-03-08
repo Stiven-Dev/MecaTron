@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Registro digital de ordenes</title>
+  <desc id="desc">Ilustracion de panel de recepcion con checklist y estado de orden.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef6ff"/>
+      <stop offset="1" stop-color="#d9eafc"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fefefe"/>
+      <stop offset="1" stop-color="#edf4fc"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f4a7e"/>
+      <stop offset="1" stop-color="#1a6aa7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="170" cy="120" r="160" fill="#ff7b26" opacity="0.14"/>
+  <circle cx="1140" cy="620" r="210" fill="#1f8f4a" opacity="0.12"/>
+
+  <rect x="96" y="88" width="820" height="548" rx="34" fill="url(#panel)" stroke="#aac6e4" stroke-width="3"/>
+  <rect x="96" y="88" width="820" height="90" rx="34" fill="url(#accent)"/>
+  <rect x="96" y="138" width="820" height="40" fill="url(#accent)"/>
+
+  <circle cx="152" cy="132" r="12" fill="#e3f0ff"/>
+  <circle cx="192" cy="132" r="12" fill="#e3f0ff"/>
+  <circle cx="232" cy="132" r="12" fill="#e3f0ff"/>
+
+  <rect x="180" y="220" width="498" height="60" rx="14" fill="#dfeaf8"/>
+  <rect x="180" y="306" width="498" height="60" rx="14" fill="#dfeaf8"/>
+  <rect x="180" y="392" width="498" height="60" rx="14" fill="#dfeaf8"/>
+  <rect x="180" y="478" width="498" height="60" rx="14" fill="#dfeaf8"/>
+
+  <g fill="none" stroke="#1f8f4a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M718 248l14 14 26-30"/>
+    <path d="M718 334l14 14 26-30"/>
+    <path d="M718 420l14 14 26-30"/>
+    <path d="M718 506l14 14 26-30"/>
+  </g>
+
+  <rect x="962" y="126" width="224" height="470" rx="26" fill="#ffffff" stroke="#9bb9d8" stroke-width="3"/>
+  <rect x="1000" y="176" width="148" height="12" rx="6" fill="#d7e6f6"/>
+  <rect x="1000" y="210" width="148" height="12" rx="6" fill="#d7e6f6"/>
+  <rect x="1000" y="244" width="106" height="12" rx="6" fill="#d7e6f6"/>
+
+  <rect x="1000" y="300" width="148" height="170" rx="16" fill="#e9f2fb"/>
+  <rect x="1028" y="332" width="92" height="92" rx="14" fill="#0f4a7e" opacity="0.86"/>
+  <path d="M1053 378h42" stroke="#cfe4ff" stroke-width="10" stroke-linecap="round"/>
+
+  <rect x="1000" y="498" width="148" height="54" rx="12" fill="#ff7b26"/>
+</svg>

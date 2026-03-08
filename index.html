@@ -146,24 +146,265 @@
 			</section>
 
 			<!-- [section/content] Bloques de contenido enlazados desde la navegacion principal. -->
-			<section id="producto" class="section">
-				<h2>Producto</h2>
-				<p>Contenido del producto.</p>
+			<section id="producto" class="section product-section" aria-labelledby="producto-title">
+				<div class="section-heading">
+					<p class="section-kicker">Operacion diaria sin caos</p>
+					<h2 id="producto-title">Como funciona MecaTron y que problema resuelve en cada etapa</h2>
+					<p class="section-lead">
+						MecaTron unifica recepcion, ejecucion tecnica y cierre comercial en un flujo continuo.
+						Asi evitas repetir datos, perder informacion critica y facturar con errores.
+					</p>
+				</div>
+
+				<div class="product-flow" aria-label="Flujo operativo de MecaTron">
+					<article class="flow-step">
+						<span class="flow-step-index">01</span>
+						<h3>Recepcion digital</h3>
+						<p>Creas la orden con cliente, vehiculo, sintomas y evidencia en un solo registro.</p>
+					</article>
+					<article class="flow-step">
+						<span class="flow-step-index">02</span>
+						<h3>Asignacion tecnica</h3>
+						<p>Distribuyes tareas por especialidad y tiempo estimado para evitar cuellos de botella.</p>
+					</article>
+					<article class="flow-step">
+						<span class="flow-step-index">03</span>
+						<h3>Ejecucion y repuestos</h3>
+						<p>Registras mano de obra y consumo de inventario mientras el trabajo avanza.</p>
+					</article>
+					<article class="flow-step">
+						<span class="flow-step-index">04</span>
+						<h3>Cierre y factura</h3>
+						<p>Consolidas horas, repuestos e IVA del 19% para emitir facturas sin recalculos.</p>
+					</article>
+				</div>
+
+				<div class="pain-solution-grid" aria-label="Problematicas frecuentes con su solucion">
+					<article class="pain-card">
+						<h3>Desorganizacion en registros manuales</h3>
+						<p class="pain-label">Problematica</p>
+						<p class="pain-copy">
+							La informacion queda en cuadernos, chats o formatos sueltos, y el historial tecnico se pierde.
+						</p>
+						<p class="solution-label">Solucion en MecaTron</p>
+						<ul class="solution-list">
+							<li>Ficha unica por cliente y placa con trazabilidad completa.</li>
+							<li>Estados de orden visibles para todo el equipo en tiempo real.</li>
+							<li>Historial reutilizable para recepciones futuras mas rapidas.</li>
+						</ul>
+						<div class="media-slot">
+							<img
+								class="media-slot-image"
+								src="assets/img/registro-digital.svg"
+								alt="Panel de recepcion digital con checklist de ordenes y estado de avance"
+							/>
+							<p class="media-slot-caption">Recepcion digital y seguimiento centralizado de ordenes.</p>
+						</div>
+					</article>
+
+					<article class="pain-card">
+						<h3>Perdida de control de repuestos</h3>
+						<p class="pain-label">Problematica</p>
+						<p class="pain-copy">
+							Los repuestos salen del inventario sin registro exacto y luego faltan piezas en trabajos urgentes.
+						</p>
+						<p class="solution-label">Solucion en MecaTron</p>
+						<ul class="solution-list">
+							<li>Descuento automatico de stock cuando se asocia un repuesto a la orden.</li>
+							<li>Alerta de minimos para reponer antes de quedar sin disponibilidad.</li>
+							<li>Relacion directa entre consumo, costo y margen por servicio.</li>
+						</ul>
+						<div class="media-slot">
+							<img
+								class="media-slot-image"
+								src="assets/img/control-repuestos.svg"
+								alt="Estanteria de inventario con control visual de repuestos y niveles de stock"
+							/>
+							<p class="media-slot-caption">Control de entradas, salidas y stock critico de repuestos.</p>
+						</div>
+					</article>
+
+					<article class="pain-card">
+						<h3>Errores en facturacion</h3>
+						<p class="pain-label">Problematica</p>
+						<p class="pain-copy">
+							Las cuentas se hacen a mano, se omiten conceptos y aparecen diferencias frente al cobro real.
+						</p>
+						<p class="solution-label">Solucion en MecaTron</p>
+						<ul class="solution-list">
+							<li>Calculo automatico de subtotal, IVA del 19% y total final.</li>
+							<li>Detalle claro por repuestos, mano de obra y observaciones.</li>
+							<li>Factura lista para imprimir o enviar al cliente en minutos.</li>
+						</ul>
+						<div class="media-slot">
+							<img
+								class="media-slot-image"
+								src="assets/img/facturacion-automatica.svg"
+								alt="Factura digital con calculo automatico y validacion de impuestos"
+							/>
+							<p class="media-slot-caption">Vista previa de factura con impuestos y conceptos consolidados.</p>
+						</div>
+					</article>
+
+					<article class="pain-card">
+						<h3>Dificultad para calcular horas de trabajo</h3>
+						<p class="pain-label">Problematica</p>
+						<p class="pain-copy">
+							Se estiman horas por memoria y no hay claridad de cuanto tiempo consume cada servicio.
+						</p>
+						<p class="solution-label">Solucion en MecaTron</p>
+						<ul class="solution-list">
+							<li>Registro de inicio y cierre por tecnico en cada actividad.</li>
+							<li>Acumulado de horas por orden y por tipo de servicio.</li>
+							<li>Base historica para cotizar mejor y planear cargas de trabajo.</li>
+						</ul>
+						<div class="media-slot">
+							<img
+								class="media-slot-image"
+								src="assets/img/control-horas.svg"
+								alt="Reloj operativo y tablero de tiempos por actividad tecnica"
+							/>
+							<p class="media-slot-caption">Panel de horas reales por tecnico, orden y especialidad.</p>
+						</div>
+					</article>
+				</div>
 			</section>
 
-			<section id="beneficios" class="section">
-				<h2>Beneficios</h2>
-				<p>Contenido de beneficios.</p>
+			<section id="beneficios" class="section benefits-section" aria-labelledby="beneficios-title">
+				<div class="section-heading">
+					<p class="section-kicker">Impacto operativo</p>
+					<h2 id="beneficios-title">Beneficios concretos para el taller y su rentabilidad</h2>
+					<p class="section-lead">
+						Una vez ordenas registros, repuestos, horas y facturas en una sola plataforma,
+						la operacion deja de depender de urgencias y empieza a trabajar por indicadores.
+					</p>
+				</div>
+
+				<div class="benefits-layout">
+					<div class="metrics-grid" aria-label="Indicadores de mejora">
+						<article class="metric-card">
+							<p class="metric-value">Hasta 40%</p>
+							<p class="metric-label">menos tiempo administrativo por orden atendida.</p>
+						</article>
+						<article class="metric-card">
+							<p class="metric-value">Control 24/7</p>
+							<p class="metric-label">de stock y consumo real de repuestos por servicio.</p>
+						</article>
+						<article class="metric-card">
+							<p class="metric-value"><span class="slashed-zero">0</span> recalculos</p>
+							<p class="metric-label">manuales al facturar con IVA y mano de obra.</p>
+						</article>
+						<article class="metric-card">
+							<p class="metric-value">Visibilidad diaria</p>
+							<p class="metric-label">de productividad por tecnico y por tipo de trabajo.</p>
+						</article>
+					</div>
+
+					<div class="media-slot media-slot-large">
+						<img
+							class="media-slot-image"
+							src="assets/img/tablero-indicadores.svg"
+							alt="Tablero de indicadores con graficas de ordenes, ingresos, tiempos y productividad"
+						/>
+						<p class="media-slot-caption">Tablero de indicadores: ordenes, ingresos, tiempos y productividad.</p>
+					</div>
+				</div>
+
+				<ul class="benefits-list">
+					<li>Reduce retrabajos operativos y discusiones por informacion incompleta.</li>
+					<li>Mejora la puntualidad de entrega gracias al seguimiento por estado.</li>
+					<li>Facilita decisiones de compra con datos de rotacion y rentabilidad.</li>
+					<li>Fortalece la experiencia del cliente con trazabilidad y cobro transparente.</li>
+				</ul>
 			</section>
 
-			<section id="testimonios" class="section">
-				<h2>Testimonios</h2>
-				<p>Contenido de testimonios.</p>
+			<section id="testimonios" class="section testimonials-section" aria-labelledby="testimonios-title">
+				<div class="section-heading">
+					<p class="section-kicker">Voces del taller</p>
+					<h2 id="testimonios-title">Testimonios de equipos que ya ordenaron su operacion</h2>
+				</div>
+
+				<div class="testimonial-grid">
+					<article class="testimonial-card">
+						<p class="testimonial-quote">
+							"Antes cerrabamos el dia con papeles sueltos. Hoy sabemos que esta pendiente,
+							que ya se cobro y quien atendio cada orden."
+						</p>
+						<p class="testimonial-author">Jefe de tienda</p>
+						<p class="testimonial-role">Coordinador de recepcion</p>
+					</article>
+
+					<article class="testimonial-card">
+						<p class="testimonial-quote">
+							"El control de repuestos nos cambio la rentabilidad. Dejamos de perder piezas
+							y ahora compramos con base en datos reales."
+						</p>
+						<p class="testimonial-author">Mecanico senior</p>
+						<p class="testimonial-role">Especialista en diagnostico</p>
+					</article>
+
+					<article class="testimonial-card">
+						<p class="testimonial-quote">
+							"Facturar con IVA y horas de trabajo dejo de ser un dolor de cabeza.
+							Ahora cerramos en minutos y sin diferencias de caja."
+						</p>
+						<p class="testimonial-author">Encargada de facturacion</p>
+						<p class="testimonial-role">Administradora de taller</p>
+					</article>
+				</div>
 			</section>
 
-			<section id="pricing" class="section">
-				<h2>Precios</h2>
-				<p>Contenido de precios.</p>
+			<section id="pricing" class="section pricing-section" aria-labelledby="pricing-title">
+				<div class="section-heading">
+					<p class="section-kicker">Planes y escalabilidad</p>
+					<h2 id="pricing-title">Precios pensados para crecer con tu taller</h2>
+					<p class="section-lead">
+						Empieza con lo esencial y escala cuando tu operacion requiera mas tecnicos,
+						mas ordenes y reportes avanzados.
+					</p>
+				</div>
+
+				<div class="pricing-grid">
+					<article class="plan-card">
+						<p class="plan-name">Plan Esencial</p>
+						<p class="plan-price">$149.000<span>/mes</span></p>
+						<p class="plan-summary">Ideal para talleres que inician su digitalizacion.</p>
+						<ul class="plan-features">
+							<li>Hasta 3 usuarios activos.</li>
+							<li>Ordenes, clientes y vehiculos ilimitados.</li>
+							<li>Control base de repuestos.</li>
+							<li>Facturacion con IVA del 19%.</li>
+						</ul>
+						<a class="plan-cta" href="#form-solicitar-demo">Solicitar demo</a>
+					</article>
+
+					<article class="plan-card is-featured">
+						<p class="plan-badge">Recomendado</p>
+						<p class="plan-name">Plan Control Total</p>
+						<p class="plan-price">$249.000<span>/mes</span></p>
+						<p class="plan-summary">Pensado para talleres con mayor flujo y equipo tecnico.</p>
+						<ul class="plan-features">
+							<li>Hasta 10 usuarios activos.</li>
+							<li>Control avanzado de inventario y alertas.</li>
+							<li>Medicion de horas por tecnico y servicio.</li>
+							<li>Reportes de rentabilidad por orden.</li>
+						</ul>
+						<a class="plan-cta" href="#form-solicitar-demo">Quiero este plan</a>
+					</article>
+
+					<article class="plan-card">
+						<p class="plan-name">Plan Multi-Sede</p>
+						<p class="plan-price">Cotizacion<span>personalizada</span></p>
+						<p class="plan-summary">Para redes de talleres con operaciones simultaneas.</p>
+						<ul class="plan-features">
+							<li>Usuarios y sedes segun necesidad.</li>
+							<li>Consolidado de indicadores por sede.</li>
+							<li>Acompanamiento de implementacion dedicado.</li>
+							<li>Soporte prioritario.</li>
+						</ul>
+						<a class="plan-cta" href="#form-solicitar-demo">Hablar con ventas</a>
+					</article>
+				</div>
 			</section>
 
 			<!-- [section/demo] Bloque de conversion con argumento comercial y formulario. -->

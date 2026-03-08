@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Control de horas de trabajo</title>
+  <desc id="desc">Ilustracion de reloj operativo con linea de tiempo y tareas por tecnico.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef7ff"/>
+      <stop offset="1" stop-color="#d9ebfc"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="112" cy="612" r="180" fill="#1f8f4a" opacity="0.1"/>
+  <circle cx="1142" cy="114" r="160" fill="#ff7b26" opacity="0.14"/>
+
+  <circle cx="406" cy="360" r="238" fill="#fdfefe" stroke="#9cb9d8" stroke-width="6"/>
+  <circle cx="406" cy="360" r="196" fill="#e8f2fd"/>
+
+  <g stroke="#97b6d6" stroke-width="5">
+    <path d="M406 148v32"/>
+    <path d="M406 540v32"/>
+    <path d="M194 360h32"/>
+    <path d="M586 360h32"/>
+    <path d="M257 211l22 22"/>
+    <path d="M533 487l22 22"/>
+    <path d="M257 509l22-22"/>
+    <path d="M533 233l22-22"/>
+  </g>
+
+  <path d="M406 360V252" stroke="#0f4a7e" stroke-width="18" stroke-linecap="round"/>
+  <path d="M406 360l122 66" stroke="#ff7b26" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="406" cy="360" r="24" fill="#0f4a7e"/>
+
+  <rect x="720" y="120" width="426" height="500" rx="30" fill="#ffffff" stroke="#9ebbd9" stroke-width="3"/>
+
+  <rect x="768" y="178" width="328" height="64" rx="14" fill="#e6f1fd"/>
+  <rect x="768" y="266" width="328" height="64" rx="14" fill="#e6f1fd"/>
+  <rect x="768" y="354" width="328" height="64" rx="14" fill="#e6f1fd"/>
+  <rect x="768" y="442" width="328" height="64" rx="14" fill="#e6f1fd"/>
+
+  <rect x="786" y="198" width="168" height="24" rx="12" fill="#0f4a7e" opacity="0.8"/>
+  <rect x="786" y="286" width="220" height="24" rx="12" fill="#1f8f4a" opacity="0.66"/>
+  <rect x="786" y="374" width="132" height="24" rx="12" fill="#ff7b26" opacity="0.74"/>
+  <rect x="786" y="462" width="258" height="24" rx="12" fill="#1a6aa7" opacity="0.66"/>
+</svg>
