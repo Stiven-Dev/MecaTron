@@ -1,3 +1,4 @@
+// [overview] Modulos activos: back-to-top, nav responsive, formulario demo, tema, toggle y contadores de beneficios.
 // [feature/back-to-top] Muestra el boton tras un umbral de scroll y vuelve al inicio.
 const backToTopButton = document.querySelector("#btn-volver-arriba");
 

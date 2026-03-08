@@ -870,7 +870,7 @@ main {
     background: linear-gradient(120deg, #8ff5b7, #5ed78f);
 }
 
-/* [section/demo] Distribucion del bloque de demo: mensaje comercial + formulario. */
+/* [section/demo] Bloque de demo con layout dual, formulario validable y feedback visual. */
 .contact-form {
     max-width: 42rem;
     width: 100%;
@@ -1078,7 +1078,7 @@ main {
     border-color: rgba(190, 70, 53, 0.36);
 }
 
-/* [layout/footer] Footer y boton flotante para volver al inicio. */
+/* [layout/footer] Footer en linea y botones flotantes (tema + volver arriba). */
 .site-footer {
     position: relative;
     z-index: 1;
