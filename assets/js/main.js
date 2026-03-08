@@ -180,37 +180,6 @@ if (siteHeader && homeLink && mainNav && navToggle) {
 	applyNavLayout();
 }
 
-// [feature/contact-links] Resuelve enlaces en runtime para dificultar scraping directo.
-const demoContactLinks = document.querySelectorAll(".demo-contact-link");
-
-if (demoContactLinks.length > 0) {
-	const decodeContact = (charCodes) =>
-		charCodes.map((code) => String.fromCharCode(code)).join("");
-
-	const obfuscatedContacts = {
-		phone: [43, 53, 55, 51, 48, 48, 49, 50, 51, 52, 53, 54, 55],
-		mail: [
-			100, 101, 109, 111, 64, 109, 101, 99, 97, 116, 114, 111, 110, 46, 99, 111,
-		],
-	};
-
-	demoContactLinks.forEach((link) => {
-		link.addEventListener("click", (event) => {
-			event.preventDefault();
-
-			const contactType = link.dataset.contact;
-			const value = decodeContact(obfuscatedContacts[contactType] || []);
-
-			if (!value) {
-				return;
-			}
-
-			window.location.href =
-				contactType === "phone" ? `tel:${value}` : `mailto:${value}`;
-		});
-	});
-}
-
 // [feature/char-counter] Actualiza contador del textarea y estados cercanos al limite.
 const demoMessageInput = document.querySelector("#demo-mensaje");
 const demoCounter = document.querySelector("#demo-char-counter");
@@ -239,4 +208,284 @@ if (demoMessageInput && demoCounter && demoCounterCurrent) {
 
 	demoMessageInput.addEventListener("input", updateMessageCounter);
 	updateMessageCounter();
+}
+
+// [feature/form-submit] Valida y envia el formulario demo con feedback dinamico (sin alertas).
+const demoForm = document.querySelector(".demo-form");
+
+if (demoForm) {
+	const demoNameInput = demoForm.querySelector('input[name="nombre"]');
+	const demoEmailInput = demoForm.querySelector('input[name="correo"]');
+	const demoFormMessageInput = demoForm.querySelector('textarea[name="mensaje"]');
+	const submitButton = demoForm.querySelector('button[type="submit"]');
+
+	let formFeedback = demoForm.querySelector("#demo-form-feedback");
+
+	if (!formFeedback) {
+		formFeedback = document.createElement("p");
+		formFeedback.id = "demo-form-feedback";
+		formFeedback.className = "form-feedback";
+		formFeedback.setAttribute("aria-live", "polite");
+
+		if (submitButton) {
+			submitButton.insertAdjacentElement("afterend", formFeedback);
+		} else {
+			demoForm.append(formFeedback);
+		}
+	}
+
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+	const setFieldValidity = (field, isValid) => {
+		if (!field) {
+			return;
+		}
+
+		field.classList.toggle("is-invalid", !isValid);
+		field.setAttribute("aria-invalid", String(!isValid));
+	};
+
+	const showFormFeedback = (message, type) => {
+		if (!formFeedback) {
+			return;
+		}
+
+		formFeedback.textContent = message;
+		formFeedback.classList.remove("is-success", "is-error", "is-visible");
+
+		if (!message) {
+			return;
+		}
+
+		formFeedback.classList.add("is-visible", type === "success" ? "is-success" : "is-error");
+	};
+
+	const getTrimmedValue = (field) => field?.value.trim() || "";
+
+	const validateDemoForm = () => {
+		const errors = [];
+
+		const nameValue = getTrimmedValue(demoNameInput);
+		const emailValue = getTrimmedValue(demoEmailInput);
+		const messageValue = getTrimmedValue(demoFormMessageInput);
+
+		const isNameValid = nameValue.length >= 3;
+		const isEmailValid = emailPattern.test(emailValue);
+		const isMessageValid = messageValue.length >= 10;
+
+		setFieldValidity(demoNameInput, isNameValid);
+		setFieldValidity(demoEmailInput, isEmailValid);
+		setFieldValidity(demoFormMessageInput, isMessageValid);
+
+		if (!isNameValid) {
+			errors.push("Ingresa un nombre valido de al menos 3 caracteres.");
+		}
+
+		if (!isEmailValid) {
+			errors.push("Ingresa un correo electronico valido.");
+		}
+
+		if (!isMessageValid) {
+			errors.push("Ingresa un mensaje de al menos 10 caracteres.");
+		}
+
+		return errors;
+	};
+
+	const handleFieldInput = (field) => {
+		if (!field) {
+			return;
+		}
+
+		field.addEventListener("input", () => {
+			if (field.classList.contains("is-invalid")) {
+				setFieldValidity(field, true);
+			}
+
+			if (formFeedback?.classList.contains("is-error")) {
+				showFormFeedback("", "error");
+			}
+		});
+	};
+
+	handleFieldInput(demoNameInput);
+	handleFieldInput(demoEmailInput);
+	handleFieldInput(demoFormMessageInput);
+
+	demoForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		const validationErrors = validateDemoForm();
+
+		if (validationErrors.length > 0) {
+			showFormFeedback(validationErrors[0], "error");
+			return;
+		}
+
+		showFormFeedback(
+			"Solicitud enviada correctamente. Te contactaremos en menos de 24 horas habiles.",
+			"success",
+		);
+
+		demoForm.reset();
+		setFieldValidity(demoNameInput, true);
+		setFieldValidity(demoEmailInput, true);
+		setFieldValidity(demoFormMessageInput, true);
+
+		if (demoMessageInput) {
+			demoMessageInput.dispatchEvent(new Event("input", { bubbles: true }));
+		}
+	});
+}
+
+// [feature/theme-toggle] Alterna entre tema claro/oscuro y recuerda preferencia del usuario.
+const themeToggleButton = document.querySelector("#btn-theme-toggle");
+
+if (themeToggleButton) {
+	const root = document.documentElement;
+	const themeStorageKey = "mecatron-theme";
+
+	const applyTheme = (theme) => {
+		const nextTheme = theme === "dark" ? "dark" : "light";
+		const isDark = nextTheme === "dark";
+
+		root.dataset.theme = nextTheme;
+		themeToggleButton.setAttribute("aria-pressed", String(isDark));
+		themeToggleButton.setAttribute(
+			"aria-label",
+			isDark ? "Activar modo claro" : "Activar modo oscuro",
+		);
+		themeToggleButton.title =
+			isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro";
+	};
+
+	const getInitialTheme = () => {
+		try {
+			const storedTheme = window.localStorage.getItem(themeStorageKey);
+
+			if (storedTheme === "dark" || storedTheme === "light") {
+				return storedTheme;
+			}
+		} catch {
+			// Sin acceso a storage: se usa preferencia del sistema.
+		}
+
+		return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches
+			? "dark"
+			: "light";
+	};
+
+	applyTheme(getInitialTheme());
+
+	themeToggleButton.addEventListener("click", () => {
+		const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+		applyTheme(nextTheme);
+
+		try {
+			window.localStorage.setItem(themeStorageKey, nextTheme);
+		} catch {
+			// Ignora error de storage y mantiene el cambio visual en memoria.
+		}
+	});
+}
+
+// [feature/benefits-toggle] Muestra/oculta informacion secundaria sin recargar pagina.
+const infoToggleButtons = document.querySelectorAll(".info-toggle-btn");
+
+if (infoToggleButtons.length > 0) {
+	const setPanelState = (button, panel, isExpanded) => {
+		const showText = button.dataset.showText || "Mostrar informacion";
+		const hideText = button.dataset.hideText || "Ocultar informacion";
+
+		panel.hidden = !isExpanded;
+		button.setAttribute("aria-expanded", String(isExpanded));
+		button.textContent = isExpanded ? hideText : showText;
+	};
+
+	infoToggleButtons.forEach((button) => {
+		const targetId = button.dataset.toggleTarget;
+		const panel = targetId ? document.getElementById(targetId) : null;
+
+		if (!panel) {
+			return;
+		}
+
+		setPanelState(button, panel, button.getAttribute("aria-expanded") !== "false");
+
+		button.addEventListener("click", () => {
+			setPanelState(button, panel, panel.hidden);
+		});
+	});
+}
+
+// [feature/benefits-counter] Anima indicadores numericos al entrar en viewport.
+const metricCounters = Array.from(document.querySelectorAll(".metric-counter[data-end]"));
+
+if (metricCounters.length > 0) {
+	const prefersReducedMotion =
+		window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches || false;
+
+	const formatCounterValue = (counter, value) => {
+		const prefix = counter.dataset.prefix || "";
+		const suffix = counter.dataset.suffix || "";
+
+		counter.textContent = `${prefix}${Math.round(value)}${suffix}`;
+	};
+
+	const animateCounter = (counter) => {
+		if (counter.dataset.animated === "true") {
+			return;
+		}
+
+		counter.dataset.animated = "true";
+
+		const start = Number(counter.dataset.start || 0);
+		const end = Number(counter.dataset.end || 0);
+		const duration = Number(counter.dataset.duration || 1200);
+
+		if (prefersReducedMotion || duration <= 0) {
+			formatCounterValue(counter, end);
+			return;
+		}
+
+		const startTime = performance.now();
+		const delta = end - start;
+		const easeOutCubic = (progress) => 1 - (1 - progress) ** 3;
+
+		const tick = (now) => {
+			const elapsed = now - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			const eased = easeOutCubic(progress);
+
+			formatCounterValue(counter, start + delta * eased);
+
+			if (progress < 1) {
+				window.requestAnimationFrame(tick);
+			}
+		};
+
+		window.requestAnimationFrame(tick);
+	};
+
+	const runCounters = () => {
+		metricCounters.forEach(animateCounter);
+	};
+
+	const benefitsSection = document.querySelector("#beneficios");
+
+	if (benefitsSection && "IntersectionObserver" in window) {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries.some((entry) => entry.isIntersecting)) {
+					runCounters();
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.35 },
+		);
+
+		observer.observe(benefitsSection);
+	} else {
+		runCounters();
+	}
 }

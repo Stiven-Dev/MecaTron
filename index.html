@@ -283,11 +283,31 @@
 				<div class="benefits-layout">
 					<div class="metrics-grid" aria-label="Indicadores de mejora">
 						<article class="metric-card">
-							<p class="metric-value">Hasta 40%</p>
+							<p class="metric-value">
+								<span
+									class="metric-counter"
+									data-start="0"
+									data-end="40"
+									data-prefix="Hasta "
+									data-suffix="%"
+									data-duration="1300"
+									>Hasta 40%</span
+								>
+							</p>
 							<p class="metric-label">menos tiempo administrativo por orden atendida.</p>
 						</article>
 						<article class="metric-card">
-							<p class="metric-value">Control 24/7</p>
+							<p class="metric-value">
+								<span
+									class="metric-counter"
+									data-start="0"
+									data-end="24"
+									data-prefix="Control "
+									data-suffix="/7"
+									data-duration="1400"
+									>Control 24/7</span
+								>
+							</p>
 							<p class="metric-label">de stock y consumo real de repuestos por servicio.</p>
 						</article>
 						<article class="metric-card">
@@ -295,7 +315,17 @@
 							<p class="metric-label">manuales al facturar con IVA y mano de obra.</p>
 						</article>
 						<article class="metric-card">
-							<p class="metric-value">Visibilidad diaria</p>
+							<p class="metric-value">
+								<span
+									class="metric-counter"
+									data-start="0"
+									data-end="100"
+									data-prefix="Visibilidad "
+									data-suffix="%"
+									data-duration="1500"
+									>Visibilidad diaria</span
+								>
+							</p>
 							<p class="metric-label">de productividad por tecnico y por tipo de trabajo.</p>
 						</article>
 					</div>
@@ -310,12 +340,26 @@
 					</div>
 				</div>
 
-				<ul class="benefits-list">
-					<li>Reduce retrabajos operativos y discusiones por informacion incompleta.</li>
-					<li>Mejora la puntualidad de entrega gracias al seguimiento por estado.</li>
-					<li>Facilita decisiones de compra con datos de rotacion y rentabilidad.</li>
-					<li>Fortalece la experiencia del cliente con trazabilidad y cobro transparente.</li>
-				</ul>
+				<button
+					type="button"
+					class="info-toggle-btn"
+					data-toggle-target="benefits-extra"
+					data-show-text="Mostrar detalles de beneficios"
+					data-hide-text="Ocultar detalles de beneficios"
+					aria-controls="benefits-extra"
+					aria-expanded="true"
+				>
+					Ocultar detalles de beneficios
+				</button>
+
+				<div id="benefits-extra" class="toggle-panel">
+					<ul class="benefits-list">
+						<li>Reduce retrabajos operativos y discusiones por informacion incompleta.</li>
+						<li>Mejora la puntualidad de entrega gracias al seguimiento por estado.</li>
+						<li>Facilita decisiones de compra con datos de rotacion y rentabilidad.</li>
+						<li>Fortalece la experiencia del cliente con trazabilidad y cobro transparente.</li>
+					</ul>
+				</div>
 			</section>
 
 			<section id="testimonios" class="section testimonials-section" aria-labelledby="testimonios-title">
@@ -423,54 +467,29 @@
 							<li>Simulación de una orden real con repuestos y horas.</li>
 							<li>Facturación final con IVA del 19% validada en vivo.</li>
 						</ul>
-
-						<div
-							class="demo-contact-icons"
-							role="group"
-							aria-label="Canales rápidos de contacto"
-						>
-							<!-- [demo/contact] Fallback usable sin JS; main.js mantiene ofuscacion del valor final. -->
-							<a
-								class="demo-contact-link"
-								href="tel:+573001234567"
-								data-contact="phone"
-								aria-label="Llamar a MecaTron"
-								title="Llamar"
-							>
-								<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-									<path
-										d="M7.4 3.5h2.6a1 1 0 0 1 1 .8l.8 3.6a1 1 0 0 1-.4 1l-1.9 1.3a14.4 14.4 0 0 0 4.3 4.3l1.3-1.9a1 1 0 0 1 1-.4l3.6.8a1 1 0 0 1 .8 1v2.6a1.7 1.7 0 0 1-1.8 1.7C10.2 20.2 3.8 13.8 3.8 5.2A1.7 1.7 0 0 1 5.5 3.5z"
-									/>
-								</svg>
-							</a>
-							<a
-								class="demo-contact-link"
-								href="mailto:demo@mecatron.co"
-								data-contact="mail"
-								aria-label="Escribir a MecaTron"
-								title="Enviar correo"
-							>
-								<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-									<rect x="3" y="5" width="18" height="14" rx="2" />
-									<path d="M4 7l8 6 8-6" />
-								</svg>
-							</a>
-						</div>
 					</div>
 
 					<div class="demo-form-wrap">
 						<!-- [demo/form] Formulario simple; el contador de caracteres se actualiza desde main.js. -->
-						<form class="contact-form demo-form">
-							<input type="text" name="nombre" placeholder="Nombre" required />
+						<form class="contact-form demo-form" id="demo-form" novalidate>
+							<input
+								type="text"
+								name="nombre"
+								placeholder="Nombre"
+								minlength="3"
+								required
+							/>
 							<input type="email" name="correo" placeholder="Correo" required />
 							<div class="message-field">
 								<textarea
 									id="demo-mensaje"
 									name="mensaje"
 									rows="4"
+									minlength="10"
 									maxlength="2000"
 									placeholder="Mensaje (max. 2000 caracteres)"
-									aria-describedby="demo-char-counter"
+									aria-describedby="demo-char-counter demo-form-feedback"
+									required
 								></textarea>
 								<p
 									id="demo-char-counter"
@@ -483,13 +502,114 @@
 								</p>
 							</div>
 							<button type="submit">Enviar</button>
+							<p id="demo-form-feedback" class="form-feedback" aria-live="polite"></p>
 						</form>
 					</div>
 				</div>
 			</section>
 		</main>
 
-		<footer class="site-footer">©2026 MecaTron. All rights reserved.</footer>
+		<footer class="site-footer" aria-label="Informacion de pie de pagina">
+			<div class="footer-inline">
+				<p class="footer-label">Contacto y redes sociales (simuladas)</p>
+				<div class="footer-links" role="group" aria-label="Canales de contacto y redes">
+					<a
+						class="footer-link"
+						href="tel:+573001234567"
+						aria-label="Llamar al +57 300 123 4567"
+					>
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<path
+								d="M7.4 3.5h2.6a1 1 0 0 1 1 .8l.8 3.6a1 1 0 0 1-.4 1l-1.9 1.3a14.4 14.4 0 0 0 4.3 4.3l1.3-1.9a1 1 0 0 1 1-.4l3.6.8a1 1 0 0 1 .8 1v2.6a1.7 1.7 0 0 1-1.8 1.7C10.2 20.2 3.8 13.8 3.8 5.2A1.7 1.7 0 0 1 5.5 3.5z"
+							/>
+						</svg>
+						<span>+57 300 123 4567</span>
+					</a>
+					<a
+						class="footer-link"
+						href="mailto:demo@mecatron.co"
+						aria-label="Escribir a demo@mecatron.co"
+					>
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<rect x="3" y="5" width="18" height="14" rx="2" />
+							<path d="M4 7l8 6 8-6" />
+						</svg>
+						<span>demo@mecatron.co</span>
+					</a>
+					<a
+						class="footer-link"
+						href="https://www.facebook.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Ir a Facebook"
+					>
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<path d="M13.5 22v-8h2.7l.5-3h-3.2V9.2c0-.9.3-1.5 1.7-1.5h1.6V5.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4v2h-2.5v3h2.5v8" />
+						</svg>
+						<span>Facebook</span>
+					</a>
+					<a
+						class="footer-link"
+						href="https://www.instagram.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Ir a Instagram"
+					>
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<rect x="4" y="4" width="16" height="16" rx="4" />
+							<circle cx="12" cy="12" r="3.5" />
+							<circle cx="17" cy="7" r="1" fill="currentColor" stroke="none" />
+						</svg>
+						<span>Instagram</span>
+					</a>
+					<a
+						class="footer-link"
+						href="https://www.whatsapp.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Ir a WhatsApp"
+					>
+						<svg
+							class="footer-link-icon-whatsapp"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+							focusable="false"
+						>
+							<path d="M12 4a8 8 0 0 0-6.9 12.1L4 20l3.9-1A8 8 0 1 0 12 4z" />
+							<path d="M9.7 9.8h.8a.6.6 0 0 1 .6.5l.3 1.4a.6.6 0 0 1-.2.6l-.7.6a5.8 5.8 0 0 0 1.6 1.6l.6-.7a.6.6 0 0 1 .6-.2l1.4.3a.6.6 0 0 1 .5.6v.8a1 1 0 0 1-1 1 6.3 6.3 0 0 1-6.3-6.3 1 1 0 0 1 1-1z" />
+						</svg>
+						<span>WhatsApp</span>
+					</a>
+				</div>
+			</div>
+			<p class="footer-copy">©2026 MecaTron. Todos los derechos reservados.</p>
+		</footer>
+		<button
+			id="btn-theme-toggle"
+			class="btn-theme"
+			type="button"
+			aria-pressed="false"
+			aria-label="Activar modo oscuro"
+			title="Cambiar tema"
+		>
+			<svg
+				class="btn-theme-icon icon-moon"
+				viewBox="0 0 24 24"
+				aria-hidden="true"
+				focusable="false"
+			>
+				<path d="M14.8 3.5a8.6 8.6 0 1 0 5.7 14.9 8 8 0 0 1-5.7-14.9z" />
+			</svg>
+			<svg
+				class="btn-theme-icon icon-sun"
+				viewBox="0 0 24 24"
+				aria-hidden="true"
+				focusable="false"
+			>
+				<circle cx="12" cy="12" r="3.5" />
+				<path d="M12 2.8v2.2M12 19v2.2M21.2 12h-2.2M5 12H2.8M18.6 5.4l-1.6 1.6M7 17l-1.6 1.6M18.6 18.6L17 17M7 7L5.4 5.4" />
+			</svg>
+		</button>
 		<button
 			id="btn-volver-arriba"
 			class="btn-top"

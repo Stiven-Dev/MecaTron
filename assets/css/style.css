@@ -318,7 +318,7 @@ main {
 }
 
 .hero-kicker {
-    color: #d85d10;
+    color: #e66e1f;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -475,7 +475,7 @@ main {
 }
 
 .section-kicker {
-    color: #c95a15;
+    color: #de6e21;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -553,11 +553,11 @@ main {
 }
 
 .pain-label {
-    color: #a04711;
+    color: #c05b1c;
 }
 
 .solution-label {
-    color: #0d6b39;
+    color: #14854b;
     margin-top: 0.7rem;
 }
 
@@ -673,6 +673,12 @@ main {
     margin-bottom: 0.35rem;
 }
 
+.metric-counter {
+    display: inline-block;
+    min-width: 5ch;
+    font-variant-numeric: tabular-nums;
+}
+
 .slashed-zero {
     display: inline-block;
     font-family: var(--font-body);
@@ -687,6 +693,32 @@ main {
     color: #365570;
     line-height: 1.33;
     font-size: 0.93rem;
+}
+
+.info-toggle-btn {
+    margin-top: 0.2rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(85, 121, 154, 0.45);
+    background: rgba(255, 255, 255, 0.8);
+    color: #133f66;
+    border-radius: 11px;
+    padding: 0.56rem 0.86rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.info-toggle-btn:hover,
+.info-toggle-btn:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(20, 83, 132, 0.62);
+    background: #ffffff;
+    outline: none;
+}
+
+.toggle-panel[hidden] {
+    display: none;
 }
 
 .benefits-list {
@@ -843,7 +875,7 @@ main {
     max-width: 42rem;
     width: 100%;
     display: grid;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .demo-section {
@@ -871,7 +903,7 @@ main {
 }
 
 .demo-kicker {
-    color: #97ffd1;
+    color: #b8ffd7;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.09em;
@@ -915,48 +947,9 @@ main {
     background: #85f2af;
 }
 
-.demo-contact-icons {
-    margin-top: auto;
-    display: flex;
-    gap: 0.7rem;
-    padding-top: 0.7rem;
-}
-
-.demo-contact-link {
-    width: 3.1rem;
-    height: 3.1rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 13px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: linear-gradient(145deg, rgba(255, 123, 38, 0.23), rgba(255, 123, 38, 0.12));
-    color: #ffe9da;
-    text-decoration: none;
-    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.demo-contact-link svg {
-    width: 1.45rem;
-    height: 1.45rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.demo-contact-link:hover,
-.demo-contact-link:focus-visible {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.6);
-    background: linear-gradient(145deg, rgba(255, 123, 38, 0.4), rgba(255, 123, 38, 0.2));
-    outline: none;
-}
-
 .demo-form-wrap {
     border-radius: 14px;
-    padding: 1.1rem;
+    padding: 0.95rem;
     background: rgba(255, 255, 255, 0.74);
     border: 1px solid rgba(124, 157, 189, 0.3);
 }
@@ -969,7 +962,7 @@ main {
 
 .message-field {
     display: grid;
-    gap: 0.35rem;
+    gap: 0.25rem;
 }
 
 .demo-form .message-field {
@@ -982,13 +975,13 @@ main {
 .demo-form .message-field textarea {
     flex: 0;
     /* [section/demo] Altura fija en desktop para mantener alineacion con el panel informativo. */
-    min-height: 140px;
-    height: 140px;
-    max-height: 140px;
+    min-height: 102px;
+    height: 102px;
+    max-height: 102px;
 }
 
 .demo-form .char-counter {
-    margin-top: 0.35rem;
+    margin-top: 0.2rem;
 }
 
 .char-counter {
@@ -1034,9 +1027,9 @@ main {
 }
 
 .contact-form textarea {
-    min-height: 140px;
-    height: 140px;
-    max-height: 140px;
+    min-height: 102px;
+    height: 102px;
+    max-height: 102px;
     resize: none;
     overflow-y: auto;
 }
@@ -1054,11 +1047,164 @@ main {
     filter: brightness(1.1);
 }
 
+.demo-form :where(input, textarea).is-invalid {
+    border-color: #be4635;
+    box-shadow: 0 0 0 3px rgba(190, 70, 53, 0.18);
+}
+
+.form-feedback {
+    margin-top: 0.2rem;
+    padding: 0.68rem 0.78rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    display: none;
+}
+
+.form-feedback.is-visible {
+    display: block;
+}
+
+.form-feedback.is-success {
+    color: #134f31;
+    background: rgba(31, 143, 74, 0.13);
+    border-color: rgba(31, 143, 74, 0.34);
+}
+
+.form-feedback.is-error {
+    color: #7c241a;
+    background: rgba(214, 76, 53, 0.12);
+    border-color: rgba(190, 70, 53, 0.36);
+}
+
 /* [layout/footer] Footer y boton flotante para volver al inicio. */
 .site-footer {
-    text-align: center;
-    padding: 14px 0 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 18px 18px;
     color: #eaf3ff;
+}
+
+.footer-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    padding: 0.45rem 0.2rem 0.7rem;
+    border-top: 1px solid rgba(234, 243, 255, 0.42);
+}
+
+.footer-label {
+    color: #0f375c;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    text-decoration: none;
+    color: #edf5ff;
+    padding: 0.38rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(234, 243, 255, 0.28);
+    background: rgba(15, 53, 91, 0.78);
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-link svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.footer-link-icon-whatsapp {
+    transform: translateY(-0.5px);
+}
+
+.footer-link span {
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+    transform: translateY(-2px);
+    background: rgba(255, 123, 38, 0.22);
+    border-color: rgba(255, 168, 113, 0.52);
+    outline: none;
+}
+
+.footer-copy {
+    text-align: center;
+    color: #123c61;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    padding-top: 0.15rem;
+}
+
+.btn-theme {
+    position: fixed;
+    right: 74px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(130deg, #0f4f87, #1c6baa);
+    color: #f3f9ff;
+    cursor: pointer;
+    z-index: 1200;
+    box-shadow: 0 12px 22px rgba(12, 35, 58, 0.28);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-theme-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btn-theme .icon-sun {
+    display: none;
+}
+
+.btn-theme:hover,
+.btn-theme:focus-visible {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    outline: none;
+}
+
+.btn-theme:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
 }
 
 .btn-top {
@@ -1098,6 +1244,177 @@ main {
 .btn-top:focus-visible {
     outline: 3px solid #ffffff;
     outline-offset: 3px;
+}
+
+/* [theme/dark] Variante oscura con contraste alto y continuidad visual de la marca. */
+html[data-theme="dark"] {
+    --bg-a: #081322;
+    --bg-b: #10263d;
+    --bg-c: #1a3958;
+    --text: #e7f0fa;
+    --muted: #a4bdd6;
+    --header: rgba(5, 25, 42, 0.9);
+    --link: #f0f6ff;
+    --surface: rgba(8, 31, 52, 0.82);
+    --surface-hero: rgba(9, 35, 58, 0.9);
+    --surface-dark: #082844;
+    --line: #416384;
+    --shadow: rgba(1, 8, 15, 0.58);
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+    background:
+        radial-gradient(circle at 14% 18%, rgba(255, 123, 38, 0.2), transparent 36%),
+        radial-gradient(circle at 86% 8%, rgba(43, 144, 255, 0.2), transparent 30%),
+        linear-gradient(120deg, var(--bg-a), var(--bg-b) 46%, var(--bg-c));
+}
+
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .product-section,
+html[data-theme="dark"] .benefits-section,
+html[data-theme="dark"] .testimonials-section,
+html[data-theme="dark"] .pricing-section {
+    border-color: rgba(133, 174, 208, 0.3);
+    background: linear-gradient(145deg, rgba(8, 32, 53, 0.88), rgba(13, 42, 67, 0.82));
+}
+
+html[data-theme="dark"] .demo-section {
+    background: linear-gradient(150deg, rgba(9, 35, 58, 0.9), rgba(11, 44, 72, 0.86));
+    border-color: rgba(112, 157, 195, 0.3);
+}
+
+html[data-theme="dark"] .flow-step,
+html[data-theme="dark"] .pain-card,
+html[data-theme="dark"] .metric-card,
+html[data-theme="dark"] .testimonial-card,
+html[data-theme="dark"] .plan-card,
+html[data-theme="dark"] .demo-form-wrap,
+html[data-theme="dark"] .media-slot {
+    background: rgba(10, 39, 64, 0.88);
+    border-color: rgba(130, 171, 203, 0.35);
+}
+
+html[data-theme="dark"] .plan-card.is-featured,
+html[data-theme="dark"] .demo-info,
+html[data-theme="dark"] .hero-panel {
+    box-shadow: 0 14px 24px rgba(1, 8, 16, 0.42);
+}
+
+html[data-theme="dark"] .hero-text {
+    color: #d3e4f6;
+}
+
+html[data-theme="dark"] .hero-proof li {
+    color: #e8f2fc;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.26);
+}
+
+html[data-theme="dark"] .hero-proof li::before {
+    background: linear-gradient(120deg, #82f8b0, #5fdd90);
+    box-shadow: 0 0 0 3px rgba(130, 248, 176, 0.2);
+}
+
+html[data-theme="dark"] :where(.hero-kicker, .section-kicker, .pain-label) {
+    color: #ffb27d;
+    text-shadow: 0 0 14px rgba(255, 157, 92, 0.24);
+}
+
+html[data-theme="dark"] :where(.solution-label, .demo-kicker, .plan-badge) {
+    color: #abffd1;
+    text-shadow: 0 0 14px rgba(110, 236, 164, 0.24);
+}
+
+html[data-theme="dark"] .plan-card:not(.is-featured) {
+    background: linear-gradient(165deg, rgba(14, 47, 75, 0.94), rgba(10, 37, 61, 0.92));
+    border-color: rgba(154, 196, 228, 0.44);
+    box-shadow: 0 12px 22px rgba(1, 8, 16, 0.34);
+}
+
+html[data-theme="dark"] .plan-card:not(.is-featured) .plan-summary,
+html[data-theme="dark"] .plan-card:not(.is-featured) .plan-features li,
+html[data-theme="dark"] .plan-card:not(.is-featured) .plan-price span {
+    color: #d6e8fa;
+}
+
+html[data-theme="dark"] .plan-card:not(.is-featured) .plan-price {
+    color: #ffc397;
+}
+
+html[data-theme="dark"] :where(
+    .section > p,
+    .section-lead,
+    .flow-step p,
+    .pain-copy,
+    .solution-list li,
+    .metric-label,
+    .benefits-list li,
+    .testimonial-quote,
+    .testimonial-role,
+    .plan-summary,
+    .plan-features li,
+    .media-slot-caption,
+    .demo-copy,
+    .char-counter,
+    .footer-label,
+    .footer-copy
+) {
+    color: #d2e3f4;
+}
+
+html[data-theme="dark"] :where(
+    .flow-step h3,
+    .pain-card h3,
+    .testimonial-author,
+    .plan-name,
+    .metric-value,
+    .section h2,
+    .media-slot-title,
+    .footer-link span
+) {
+    color: #eef5ff;
+}
+
+html[data-theme="dark"] .demo-form :where(input, textarea) {
+    background: rgba(4, 24, 42, 0.9);
+    color: #eef5ff;
+    border-color: rgba(111, 155, 192, 0.45);
+}
+
+html[data-theme="dark"] .demo-form :where(input, textarea)::placeholder {
+    color: #9ab4cb;
+}
+
+html[data-theme="dark"] .info-toggle-btn {
+    background: rgba(8, 34, 57, 0.9);
+    color: #eaf3ff;
+    border-color: rgba(122, 168, 206, 0.45);
+}
+
+html[data-theme="dark"] .footer-inline {
+    border-top-color: rgba(221, 236, 255, 0.26);
+}
+
+html[data-theme="dark"] .footer-link {
+    background: rgba(8, 32, 53, 0.88);
+    border-color: rgba(167, 199, 230, 0.35);
+}
+
+html[data-theme="dark"] .btn-theme {
+    background: linear-gradient(130deg, #ff8c3f, #ffb067);
+    color: #163252;
+}
+
+html[data-theme="dark"] .btn-theme .icon-moon {
+    display: none;
+}
+
+html[data-theme="dark"] .btn-theme .icon-sun {
+    display: block;
+}
+
+html[data-theme="dark"] .btn-top {
+    background: #ff9a4f;
 }
 
 /* [motion/reveal] Animaciones de entrada solo si el usuario permite movimiento. */
@@ -1212,16 +1529,28 @@ main {
         min-height: 0;
     }
 
+    .site-footer {
+        padding: 0 12px 16px;
+    }
+
+    .footer-inline {
+        padding: 0.35rem 0.1rem 0.55rem;
+    }
+
+    .footer-label {
+        flex: 1 1 100%;
+    }
+
+    .btn-theme {
+        right: 68px;
+    }
+
     .demo-layout {
         grid-template-columns: 1fr;
     }
 
     .demo-info {
         padding: 1rem;
-    }
-
-    .demo-contact-icons {
-        margin-top: 0.2rem;
     }
 }
 
@@ -1308,6 +1637,42 @@ main {
         font-size: 0.82rem;
     }
 
+    .info-toggle-btn {
+        width: 100%;
+    }
+
+    .site-footer {
+        padding: 0 10px 16px;
+    }
+
+    .footer-inline {
+        padding: 0.28rem 0;
+        gap: 0.55rem;
+    }
+
+    .footer-label {
+        font-size: 0.86rem;
+    }
+
+    .footer-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: stretch;
+    }
+
+    .footer-link {
+        justify-content: flex-start;
+    }
+
+    .footer-link span {
+        font-size: 0.84rem;
+    }
+
+    .footer-copy {
+        font-size: 0.86rem;
+    }
+
     .demo-info h2 {
         font-size: 2rem;
     }
@@ -1317,17 +1682,13 @@ main {
     }
 
     .demo-form .message-field {
-        min-height: 185px;
+        min-height: 120px;
     }
 
     .demo-form .message-field textarea {
-        min-height: 165px;
-    }
-
-    .demo-contact-link {
-        width: 2.8rem;
-        height: 2.8rem;
-        border-radius: 11px;
+        min-height: 108px;
+        height: 108px;
+        max-height: 108px;
     }
 
     .hero-btn {
@@ -1336,6 +1697,13 @@ main {
 
     .btn-top {
         right: 12px;
+        bottom: 12px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .btn-theme {
+        right: 62px;
         bottom: 12px;
         width: 44px;
         height: 44px;
